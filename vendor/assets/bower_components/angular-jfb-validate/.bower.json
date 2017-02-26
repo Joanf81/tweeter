@@ -1,0 +1,40 @@
+{
+  "name": "angular-jfb-validate",
+  "authors": [
+    "Joan Fernández Bornay <joanf81@gmail.com>"
+  ],
+  "description": "Mini framework based on angular to facilitate the creation of directives that validate html fields using visual and animated alerts.",
+  "main": "jfb-validate.js",
+  "keywords": [
+    "jfb",
+    "joanf81",
+    "angular",
+    "framework",
+    "field",
+    "validate",
+    "validators",
+    "animated"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.github.com/joanf81",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "examples",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.6.1",
+    "jquery": "~3.1.1"
+  },
+  "_release": "e9416889f4",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e9416889f48c2452d2bc4c4f5ecdae4e43f08a5e"
+  },
+  "_source": "https://github.com/Joanf81/angular-jfb-validate.git",
+  "_target": "*",
+  "_originalSource": "angular-jfb-validate"
+}

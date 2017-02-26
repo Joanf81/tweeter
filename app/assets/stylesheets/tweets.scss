@@ -1,0 +1,69 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tweet {
+  border-radius: 10px;
+
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  background-color: #F0F5F7;
+}
+
+.tweet .tweet-title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border-bottom: solid 1px #88B3C2;
+
+  background-color: #E9F2F5;
+
+  font-size: 17px;
+}
+
+.tweet .tweet-title b {
+  font-size: 19px;
+}
+
+.tweet .tweet-content {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tweet .tweet-content p {
+
+  font-size: 15px;
+}
+
+.tweet .tweet-content img {
+  margin-left: 10px;
+
+  border-radius: 10px;
+}
+
+.tweet .tweet-actions {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+
+  border-top: solid 1px #88B3C2;
+
+  font-size: 15px;
+}
+
+
+
+
+

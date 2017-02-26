@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="row">
+      <h1>User {{user.id}}</h1>
+      <br>
+      <br>
+      <table class="table user-table">
+        <tr>
+          <td class="title-td color-title">Id</td>
+          <td class="normal-td color-title">{{user.id}}</td>
+        </tr>
+        <tr>
+          <td class="title-td color-title">Email</td>
+          <td class="normal-td color-title">{{user.email}}</td>
+        </tr>
+        <tr>
+          <td class="title-td color-title">Username</td>
+          <td class="normal-td color-title">{{user.username}}</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <center>
+          <a href="#!/users/edit/{{user.id}}">
+            <button type="button" class="btn btn-default normal-button">Edit</button>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1"></div>
+</div>
+<br><br><br>

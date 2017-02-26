@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+TestUser1:
+  id: 1
+  email: "testuser1@test.com"
+  username: "testuser1"
+
+TesUser2:
+  id: 2
+  email: "testuser2@test.com"
+  username: "testuser2"

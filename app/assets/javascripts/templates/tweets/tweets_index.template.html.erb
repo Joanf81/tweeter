@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h1>Published tweets</h1>
+    <br>
+    <br>
+    <div class="row">
+
+      <div class="row" style="border-width:1.5px" ng-repeat='tweet in tweets'>
+        <div class="col-md-2"></div>
+        <div class="row tweet">
+
+          <div class="col-md-12">
+
+            <div class="row tweet-title color-title">
+              <div class="col-md-1">{{$index+1}}</div>
+              <div class="col-md-3">
+                <b>
+                  <span ng-if="tweet.type == 'TextTweet'">TEXT</span>
+                  <span ng-if="tweet.type == 'ImageTweet'">IMAGE</span>
+                  <!-- For audio tweet: -->
+                  <!-- <span ng-if="tweet.type == 'ImageTweet'">IMAGE</span> -->
+                </b>
+              </div>
+              <div class="col-md-4">
+                Author: <a href="/#!/users/show/{{tweet.user_id}}">{{tweet.user.username}}</a>
+              </div>
+              <div class="col-md-4">
+                <span ng-if="(($index+1) % 3) == 0">Third message</span>
+                <span ng-if="((($index+1) % 3) == 0) && ((($index+1) % 5) == 0)"> and </span>
+                <span ng-if="(($index+1) % 5) == 0">Fifth message</span>
+              </div>
+            </div>
+
+            <div class="row tweet-content color-content">
+              <div class="row" ng-if="tweet.type == 'TextTweet'">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>{{tweet.text}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" ng-if="tweet.type == 'ImageTweet'">
+                <div class="col-md-3" ng-if="tweet.text == null || tweet.text == ''"></div>
+                <div class="col-md-6">
+                  <img class="img-responsive" alt="[INVALID IMAGE URL]" src="{{tweet.url}}">
+                </div>
+                <div class="col-md-6" ng-if="tweet.text != null && tweet.text != ''">
+                  <p><b>Image text:</b></p>
+                  <p>{{tweet.text}}</p>
+                </div>
+                <div class="col-md-3" ng-if="tweet.text == null || tweet.text == ''"></div>
+              </div>
+
+               <!-- For audio tweet:
+              <div class="row" ng-if="tweet.type == 'AudioTweet'">
+                <div class="col-md-3" ng-if="tweet.text == null || tweet.text == ''"></div>
+                <div class="col-md-6">
+                  <audio-element src="{{tweet.url}}">
+                </div>
+                <div class="col-md-6" ng-if="tweet.text != null && tweet.text != ''">
+                  <p><b>Audio text:</b></p>
+                  <p>{{tweet.text}}</p>
+                </div>
+                <div class="col-md-3" ng-if="tweet.text == null || tweet.text == ''"></div>
+              </div>
+              -->
+            </div>
+
+            <div class="row tweet-actions color-title">
+              <div class="col-md-12 actions">
+                Actions:
+                <a href="#!/tweets/edit/{{user.id}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span></a>
+                <a href="#!/tweets/delete/{{user.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <center>
+        <a href="#!/tweets/new">
+          <button class="btn btn-default normal-button" type="button" >New Tweet</button>
+        </a>
+      </center>
+    </div>
+  </div>
+  <div class="col-xs-1"></div>
+</div>
+<br><br><br>

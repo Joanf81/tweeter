@@ -1,0 +1,16 @@
+{
+  "name": "mini-tweeter",
+  "authors": [
+    "Joanf81 <joanf81@gmail.com>"
+  ],
+  "description": "StudentStay Assignement",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://github.com/joanf81",
+  "dependencies": {
+    "angular": "~1.6.2",
+    "bootstrap": "~3.3.7",
+    "angular-route": "~1.6.1",
+    "angular-jfb-validate": "*"
+  }
+}

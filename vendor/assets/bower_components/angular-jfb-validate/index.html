@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="Joan Fernández Bornay">
+
+      <title>Radio 51 v1.0</title>
+
+      <!-- Bootstrap Core CSS 
+      <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+  </head>
+
+  <body ng-app="app">
+  <h2>{{1+1}}</h2>
+    <form name="formUserRegister" class="form-register" role="register">
+          <div class="form-group">
+            <div class="row">
+
+              <div class="col-xs-6">
+                <input type="text" id="email" name="email" class="form-control" placeholder="Insert e-mail" ng-model="email"
+                       jfb-validate-not-empty jfb-validate-is-email jfb-validate-content="{{email}}"
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+              <div class="col-xs-6">
+                <input type="text" id="username" name="username" class="form-control " placeholder="Insert user name" ng-model="username"
+                       jfb-validate-not-empty jfb-validate-max-characters="10" jfb-validate-content="{{username}}" 
+                       jfb-validate-not-empty-message="prueba not empty" jfb-validate-max-characters-message="prueba max characters"
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-xs-6">
+                <input type="text" id="phone" name="phone" class="form-control" placeholder="Insert your phone number" ng-model="phone"
+                       jfb-validate-is-phone jfb-validate-content="{{phone}}"
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+              <div class="col-xs-6">
+                <input type="text" id="birth" name="birth" class="form-control " placeholder="Insert your birth date" ng-model="birth"
+                       jfb-validate-is-valid-date jfb-validate-content="{{birth}}" 
+                       jfb-validate-max-is-valid-date
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-xs-6">
+                <input type="text" id="dir" name="dir" class="form-control" placeholder="Insert your other direction" ng-model="dir"
+                       jfb-validate-all-allowed
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+              <div class="col-xs-6">
+                <input type="text" id="birth" name="birth" class="form-control " placeholder="Insert your birth date" ng-model="birth"
+                       jfb-validate-is-valid-date jfb-validate-content="{{birth}}" 
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-xs-6">
+                <input type="text" id="numbers" name="numbers" class="form-control" placeholder="Only Numbers" ng-model="numbers"
+                       jfb-validate-only-numbers jfb-validate-not-empty jfb-validate-content="{{numbers}}" 
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+              <div class="col-xs-6">
+                <input type="text" id="letters" name="letters" class="form-control " placeholder="Only letters" ng-model="letters"
+                       jfb-validate-content="{{letters}}" 
+                       jfb-validate-only-letters
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-xs-6">
+                <input type="text" id="float" name="float" class="form-control" placeholder="Float number" ng-model="float"
+                       jfb-validate-floating-number jfb-validate-not-empty jfb-validate-content="{{float}}" 
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+              <div class="col-xs-6">
+                <input type="text" id="numbersletters" name="numbersletters" class="form-control " placeholder="Only letters/letters" ng-model="numbersletters"
+                       jfb-validate-content="{{numbersletters}}" 
+                       jfb-validate-numbers-letters
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" ng-model="pass"
+                       jfb-validate-not-empty jfb-validate-max-characters="10" jfb-validate-content="{{pass}}" jfb-validate-not-empty-message="prueba not empty" jfb-validate-show-alert="false"
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+              <div class="col-xs-6">
+                <input type="password" id="pass_repeat" name="pass_repeat" class="form-control" ng-model="pass_repeat" placeholder="Repeat password"
+                       jfb-validate-content="{{pass_repeat}}" jfb-validate-max-characters="10" jfb-validate-min-characters="5" jfb-validate-alert-height="200px"
+                       style="margin-top: 5px; margin-bottom: 5px;">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-xs-12">
+                <center>
+                  <button class="btn btn-default" type="button" ng-click='users_create()' ng-href='#here'>Register</button>
+                </center>
+              </div>
+            </div>
+
+          </div>
+    </form>
+
+
+
+    <!-- Librerias Angular -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-animate.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="jfb-validate.js"></script>
+    <script src="preset-directives/jfb_validate_not_empty.directive.js"></script>
+    <script src="preset-directives/jfb_validate_max_characters.directive.js"></script>
+    <script src="preset-directives/jfb_validate_min_characters.directive.js"></script>
+    <script src="preset-directives/jfb_validate_is_email.directive.js"></script>
+    <script src="preset-directives/jfb_validate_is_phone.directive.js"></script>
+    <script src="preset-directives/jfb_validate_is_valid_date.directive.js"></script>
+    <script src="preset-directives/jfb_validate_all_allowed.directive.js"></script>
+    <script src="preset-directives/jfb_validate_only_numbers.directive.js"></script>
+    <script src="preset-directives/jfb_validate_only_letters.directive.js"></script>
+    <script src="preset-directives/jfb_validate_floating_number.directive.js"></script>
+    <script src="preset-directives/jfb_validate_numbers_letters.directive.js"></script>
+    
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    
+    <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+
+  </body>
+</html>
+

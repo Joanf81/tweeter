@@ -1,0 +1,47 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.common-style .users-table td {
+  border: 0px;
+}
+
+.common-style .users-table .title-tr {
+  border-bottom: solid 2px #88B3C2;
+}
+
+.common-style .users-table .title-tr td {
+  font-size: 18px;
+}
+
+.common-style .users-table .normal-tr {
+  border-bottom: solid 1px #88B3C2;
+}
+
+.common-style .users-table .normal-tr td {
+  font-size: 15px;
+}
+
+.common-style .users-table .normal-tr:hover {
+  background-color: #F0F5F7;
+}
+
+
+
+
+
+.common-style .user-table td {
+  border: 0px;
+}
+
+.common-style .user-table tr:hover {
+  background-color: #F0F5F7;
+}
+
+.common-style .user-table .title-td {
+  font-size: 19px;
+}
+
+.common-style .user-table .normal-td {
+  font-size: 16px;
+}
