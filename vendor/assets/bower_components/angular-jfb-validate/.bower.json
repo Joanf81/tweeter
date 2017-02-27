@@ -28,11 +28,11 @@
     "angular": "~1.6.1",
     "jquery": "~3.1.1"
   },
-  "_release": "e9416889f4",
+  "_release": "a5d026afa6",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "e9416889f48c2452d2bc4c4f5ecdae4e43f08a5e"
+    "commit": "a5d026afa6d647a1c44b2cda84af85d093a800ca"
   },
   "_source": "https://github.com/Joanf81/angular-jfb-validate.git",
   "_target": "*",

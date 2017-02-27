@@ -19,7 +19,7 @@
                   <span ng-if="tweet.type == 'TextTweet'">TEXT</span>
                   <span ng-if="tweet.type == 'ImageTweet'">IMAGE</span>
                   <!-- For audio tweet: -->
-                  <!-- <span ng-if="tweet.type == 'ImageTweet'">IMAGE</span> -->
+                  <!-- <span ng-if="tweet.type == 'AudioTweet'">AUDIO</span> -->
                 </b>
               </div>
               <div class="col-md-4">
@@ -44,7 +44,7 @@
               <div class="row" ng-if="tweet.type == 'ImageTweet'">
                 <div class="col-md-3" ng-if="tweet.text == null || tweet.text == ''"></div>
                 <div class="col-md-6">
-                  <img class="img-responsive" alt="[INVALID IMAGE URL]" src="{{tweet.url}}">
+                  <img class="img-responsive" alt="[INVALID IMAGE URL]" ng-src="{{tweet.url}}">
                 </div>
                 <div class="col-md-6" ng-if="tweet.text != null && tweet.text != ''">
                   <p><b>Image text:</b></p>
@@ -71,8 +71,8 @@
             <div class="row tweet-actions color-title">
               <div class="col-md-12 actions">
                 Actions:
-                <a href="#!/tweets/edit/{{user.id}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span></a>
-                <a href="#!/tweets/delete/{{user.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span></a>
+                <a href="#!/tweets/edit/{{tweet.id}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span></a>
+                <a href="#!/tweets/delete/{{tweet.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span></a>
               </div>
             </div>
 

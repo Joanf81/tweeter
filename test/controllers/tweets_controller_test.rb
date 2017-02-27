@@ -45,7 +45,7 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create Text Tweet" do
     assert_difference('Tweet.count') do
-      post tweets_url, params: { tweet: { text:'Tweet text', content_type:'text', user_id:1 } }
+      post tweets_url, params: { tweet: { text:'Tweet text', type:'text', user_id:1 } }
     end
 
     assert_response :created
@@ -53,7 +53,7 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create Image Tweet" do
     assert_difference('Tweet.count') do
-      post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', content_type:'image', user_id:1 } }
+      post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'image', user_id:1 } }
     end
 
     assert_response :created
@@ -66,38 +66,38 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create a undefined type of tweet" do
-    post tweets_url, params: { tweet: { text:'Tweet text', content_type:'something_undefined', user_id:1 } }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'something_undefined', user_id:1 } }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a Image Tweet without url" do
-    post tweets_url, params: { tweet: { text:'Tweet text', content_type:'image', user_id:1 } }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'image', user_id:1 } }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a Text Tweet without text" do
-    post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', content_type:'text', user_id:1 } }
+    post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'text', user_id:1 } }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a tweet without user_id" do
-    post tweets_url, params: { tweet: { text:'Tweet text', content_type:'text'} }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'text'} }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a tweet with invalid user_id" do
-    post tweets_url, params: { tweet: { text:'Tweet text', content_type:'text', user_id:9999999} }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'text', user_id:9999999} }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a malformed tweet" do
     post tweets_url, params: { tweet: { text:'000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334',
-                                        content_type:'text', user_id:1} }
+                                        type:'text', user_id:1} }
 
     assert_response :unprocessable_entity
   end
@@ -122,7 +122,7 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
     patch tweet_url(@textTweet[:id]), params: { tweet: { type:'ImageTweet' } }
     assert_response :success
-    patch tweet_url(@textTweet[:id]), params: { tweet: { content_type:'image' } }
+    patch tweet_url(@textTweet[:id]), params: { tweet: { type:'image' } }
     assert_response :success
 
     assert Tweet.find_by(id: @textTweet[:id])[:type] == tweet_type

@@ -12,6 +12,9 @@ app.factory("usersService", function($http, apiRoutes) {
         },
         updateUsers: function(user_id, user, success, error) {
             $http.put(apiRoutes.Users+'/'+user_id, user).then(success, error);
+        },
+        indexUserTweets: function(id_user, success, error) {
+            $http.get(apiRoutes.Users+'/'+id_user+'/tweets').then(success, error);
         }
     }
 });

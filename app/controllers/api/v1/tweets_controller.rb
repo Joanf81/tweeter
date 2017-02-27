@@ -7,7 +7,7 @@ class Api::V1::TweetsController < ApplicationController
   # GET /tweets
   def index
     respond_to do |format|
-      format.all { render json: Tweet.all.as_json(include: {user: {only: :username}}, methods: :type), status: :ok }
+      format.all { render json: Tweet.all.order(:updated_at).reverse_order.as_json(include: {user: {only: :username}}, methods: :type), status: :ok }
     end
   end
 
@@ -72,9 +72,9 @@ class Api::V1::TweetsController < ApplicationController
       @new_tweet = nil
 
       # Extract the 'content_type' param and create a type of tweet depending of this param
-      if params[:tweet][:content_type] == 'image'
+      if params[:tweet][:type] == 'image'
         @new_tweet = ImageTweet.new(tweet_params)
-      elsif params[:tweet][:content_type] == 'text'
+      elsif params[:tweet][:type] == 'text'
         @new_tweet = TextTweet.new(tweet_params)
 
         # Example of adding an audio tweet type. (You must create a new model class AudioTweet extending Tweet, exemplified in 'models/tweet.rb')

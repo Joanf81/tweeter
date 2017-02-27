@@ -1,4 +1,4 @@
-app.controller('UsersNewController', function($scope, usersService) {
+app.controller('UsersNewController', function($scope, usersService, angularRoutes) {
 
     $scope.users_create = function() {
 
@@ -30,7 +30,7 @@ app.controller('UsersNewController', function($scope, usersService) {
 
                 // Success:
                 function() {
-                    window.location = "#!/users/index";
+                    window.location = '#!' + angularRoutes.users_index;
                 },
                 // Error:
                 function() {

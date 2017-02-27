@@ -44,7 +44,7 @@ class Api::V1::UsersController < ApplicationController
   # GET /users/1/tweets
   def tweets
     respond_to do |format|
-      format.all { render json: @user.tweets, status: :ok }
+      format.all { render json: @user.tweets.order(:updated_at).reverse_order.as_json(include: {user: {only: :username}}, methods: :type), status: :ok }
     end
   end
 

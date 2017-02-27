@@ -1,20 +1,9 @@
-app.controller('TweetsIndexController', function($scope, tweetsService, usersService) {
+app.controller('TweetsIndexController', function($scope, tweetsService) {
 
     tweetsService.indexTweets(
         // success:
         function(response) {
             $scope.tweets = response.data;
-            /*
-            usersService.showUsers(response.data.user_id,
-                // success:
-                function() {
-                    $scope
-                },
-                // error:
-                function() {
-
-                }
-            );*/
         },
         // error:
         function() {
