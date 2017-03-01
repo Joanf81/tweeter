@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-md-6">
         <input type="text" id="tag" name="tag" class="form-control" placeholder="New tag" ng-model="tag"
-               jfb-validate-numbers-letters jfb-validate-max-characters="15" jfb-validate-content="{{tag}}">
+               jfb-validate-not-empty jfb-validate-numbers-letters jfb-validate-max-characters="15" jfb-validate-content="{{tag}}">
       </div>
       <div class="col-md-6">
         <button ng-click="tweets_add_tag()" class="btn btn-default normal-button" style="margin-top: 18px;" type="button" >Add</button>
