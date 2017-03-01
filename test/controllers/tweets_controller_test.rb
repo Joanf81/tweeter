@@ -47,7 +47,7 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create Text Tweet" do
     assert_difference('Tweet.count') do
-      post tweets_url, params: { tweet: { text:'Tweet text', type:'text', user_id:1 } }
+      post tweets_url, params: { tweet: { text:'Tweet text', type:'TextTweet', user_id:1 } }
     end
 
     assert_response :created
@@ -55,13 +55,13 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create Image Tweet" do
     assert_difference('Tweet.count') do
-      post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'image', user_id:1 } }
+      post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'ImageTweet', user_id:1 } }
     end
 
     assert_response :created
   end
 
-  test "should not create a non-typed tweet" do
+  test "should not create a no-typed tweet" do
     post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', user_id:1 } }
 
     assert_response :unprocessable_entity
@@ -73,33 +73,45 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
+  test "should not create a tweet with empty type" do
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'', user_id:1 } }
+
+    assert_response :unprocessable_entity
+  end
+
+  test "should not create a tweet with blank type" do
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'   ', user_id:1 } }
+
+    assert_response :unprocessable_entity
+  end
+
   test "should not create a Image Tweet without url" do
-    post tweets_url, params: { tweet: { text:'Tweet text', type:'image', user_id:1 } }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'ImageTweet', user_id:1 } }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a Text Tweet without text" do
-    post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'text', user_id:1 } }
+    post tweets_url, params: { tweet: { url:'http://www.image.com/image.jpg', type:'TextTweet', user_id:1 } }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a tweet without user_id" do
-    post tweets_url, params: { tweet: { text:'Tweet text', type:'text'} }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'TextTweet'} }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a tweet with invalid user_id" do
-    post tweets_url, params: { tweet: { text:'Tweet text', type:'text', user_id:9999999} }
+    post tweets_url, params: { tweet: { text:'Tweet text', type:'TextTweet', user_id:9999999} }
 
     assert_response :unprocessable_entity
   end
 
   test "should not create a malformed tweet" do
     post tweets_url, params: { tweet: { text:'000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334',
-                                        type:'text', user_id:1} }
+                                        type:'TextTweet', user_id:1} }
 
     assert_response :unprocessable_entity
   end
@@ -123,8 +135,6 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     tweet_type = Tweet.find_by(id: @textTweet[:id])[:type]
 
     patch tweet_url(@textTweet[:id]), params: { tweet: { type:'ImageTweet' } }
-    assert_response :success
-    patch tweet_url(@textTweet[:id]), params: { tweet: { type:'image' } }
     assert_response :success
 
     assert Tweet.find_by(id: @textTweet[:id])[:type] == tweet_type
@@ -165,11 +175,22 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
 
   # Destroy
-  test "should destroy the tweet" do
+  test "should destroy the tweet but not destroy his tags" do
+    num_tags = Tag.all.count
     delete tweet_url(@textTweet[:id])
 
     assert_response :success
     assert_not Tweet.exists?(id: @textTweet[:id])
+    assert num_tags == Tag.all.count
+  end
+
+  test "should destroy the tweet and destroy one of his tags" do
+    num_tags = Tag.all.count
+    delete tweet_url(@imageTweet[:id])
+
+    assert_response :success
+    assert_not Tweet.exists?(id: @imageTweet[:id])
+    assert num_tags-1 == Tag.all.count
   end
 
   test "should not destroy a non-existent tweet" do

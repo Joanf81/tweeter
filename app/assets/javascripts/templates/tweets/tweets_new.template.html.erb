@@ -17,11 +17,11 @@
 
           <div class="col-md-6">
             <label for="contentType">Select a kind of tweet:</label>
-            <select id="contentType" name="contentType" class="form-control" ng-model="contentType" ng-init="contentType = 'text'"  jfb-validate-all-allowed="">
-              <option id="text" value="text" selected>Text Tweet</option>
-              <option id="image" value="image" >Image Tweet</option>
+            <select id="contentType" name="contentType" class="form-control" ng-model="contentType" ng-init="contentType = 'TextTweet'"  jfb-validate-all-allowed="">
+              <option id="text" value="TextTweet" selected>Text Tweet</option>
+              <option id="image" value="ImageTweetf" >Image Tweet</option>
               <!-- Audio tweet: -->
-              <!-- <option value="audio">Audio Tweet</option> -->
+              <!-- <option value="AudioTweet">Audio Tweet</option> -->
             </select>
           </div>
 
@@ -33,14 +33,14 @@
           </div>
 
         </div>
-        <div class="row" ng-if="contentType == 'text'">
+        <div class="row" ng-if="contentType == 'TextTweet'">
           <div class="col-md-12"  >
             <textarea class="form-control" id="tweettext" name="tweettext" placeholder="Insert the tweet text. (max. 140 chars)" ng-model="$parent.tweettext"
                       jfb-validate-not-empty jfb-validate-max-characters="140" jfb-validate-content="{{$parent.tweettext}}">
             </textarea>
           </div>
         </div>
-        <div class="row" ng-if="contentType == 'image'">
+        <div class="row" ng-if="contentType == 'ImageTweetf'">
           <div class="col-md-12">
             <input type="text" id="url" name="url" class="form-control" placeholder="Insert an url for the image" ng-model="$parent.url"
                    jfb-validate-not-empty jfb-validate-max-characters="200" jfb-validate-content="{{$parent.url}}">
@@ -52,7 +52,7 @@
           </div>
         </div>
         <!-- Audio tweet:
-        <div class="row" ng-if="contentType == 'audio'">
+        <div class="row" ng-if="contentType == 'AudioTweet'">
           <div class="col-md-12">
             <input type="text" id="url" name="url" class="form-control" placeholder="Insert an url for the audio" ng-model="$parent.url"
                    jfb-validate-not-empty jfb-validate-max-characters="200" jfb-validate-content="{{$parent.url}}">

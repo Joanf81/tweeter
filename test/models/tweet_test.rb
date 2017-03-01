@@ -98,5 +98,4 @@ class TweetTest < ActiveSupport::TestCase
     assert_not image_tweet.save
     assert_not ImageTweet.exists?(image_tweet.id)
   end
-
 end

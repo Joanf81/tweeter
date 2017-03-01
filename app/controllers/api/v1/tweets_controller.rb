@@ -21,13 +21,11 @@ class Api::V1::TweetsController < ApplicationController
 
   # POST /tweets
   def create
-    if @new_tweet != nil
-      respond_to do |format|
-        if @new_tweet.save
-          format.all { render json: @new_tweet, status: :created }
-        else
-          format.all { render json: {errors: @new_tweet.errors}, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @new_tweet.save
+        format.all { render json: @new_tweet, status: :created }
+      else
+        format.all { render json: {errors: @new_tweet.errors}, status: :unprocessable_entity }
       end
     end
   end
@@ -136,35 +134,21 @@ class Api::V1::TweetsController < ApplicationController
     end
 
 
-    # Evaluates the user params and creates a new tweet, ready to save
+    # Creates a new tweet with type and user_id
     def create_new_tweet
-
-      @new_tweet = nil
-
-      # Extract the 'content_type' param and create a type of tweet depending of this param
-      if params[:tweet][:type] == 'image'
-        @new_tweet = ImageTweet.new(tweet_params)
-      elsif params[:tweet][:type] == 'text'
-        @new_tweet = TextTweet.new(tweet_params)
-
-        # Example of adding an audio tweet type. (You must create a new model class AudioTweet extending Tweet, exemplified in 'models/tweet.rb')
-        #
-        # elsif params[:tweet].content_type == 'audio'
-        #   @tweet = AudioTweet.new(tweet_params)
-      end
-
-      if @new_tweet != nil
-
-        #Add a user_id param and END!
-        @new_tweet.user_id = params[:tweet][:user_id]
-        ################################################################################
-
-      else # If the content_type param wasn't correct...
+      if params[:tweet][:type] != nil && params[:tweet][:type].gsub(/\s+/, '') != '' # gsub-> Delete the spaces character for assert if the type really defined
+        begin
+          @new_tweet = Tweet.new(tweet_params.merge(:type => params[:tweet][:type], :user_id => params[:tweet][:user_id]))
+        rescue => e
+          respond_to do |format|
+            format.all { render json: {errors: {tweet: 'The type or the user id are invalids.'}}, status: :unprocessable_entity }
+          end
+        end
+      else
         respond_to do |format|
-          format.all { render json: {errors: {content_type: ['The content_type must be "image" or "text"']}}, status: :unprocessable_entity }
+          format.all { render json: {errors: {tweet: 'The type must be present.'}}, status: :unprocessable_entity }
         end
       end
-
     end
 
 
