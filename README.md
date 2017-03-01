@@ -60,5 +60,5 @@ Mozilla Firefox 46.0 for Ubuntu
 
 ## Author
 ```
-Joan Fernández Bornay
+Joan Fernández Bornay <joanf81@gmail.com>
 ```
