@@ -36,7 +36,7 @@ rake db:reset
 
 ### Run test suits
 ```
-rake db:tests
+rake test
 ```
 
 ### Deploy the rails server
