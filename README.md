@@ -1,6 +1,6 @@
 # README
 ## Application requeriments
-very simple version of a twitter-type of application with the following requirements:
+Very simple version of a twitter-type of application with the following requirements:
 
 1. It is possible to create/edit a user with basic fields like user_name and e-mail
 2. It is possible for a user to create/edit/remove a message/tweet
@@ -55,4 +55,10 @@ http://localhost:3000
 Rails 5.0.1
 ruby 2.2.6p396 (2016-11-15 revision 56800) [x86_64-linux-gnu]
 Mozilla Firefox 46.0 for Ubuntu
+```
+
+
+## Author
+```
+Joan Fernández Bornay
 ```
