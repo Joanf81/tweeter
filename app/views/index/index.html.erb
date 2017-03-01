@@ -1,24 +1,26 @@
 <div class="col-md-12 container" ng-app="app">
   <div ng-controller='mainController'>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top tittle-bar" role="navigation">
       <div class="col-md-2"></div>
 
       <div class="col-md-1 navbar-header">
-        <a class="navbar-brand" href="#">Mini-tweeter!</a>
+        <a class="navbar-brand tittle-bar-principal" href="#"><span>Tweeter!</span></a>
       </div>
+
+      <div class="col-md-1"></div>
 
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="col-md-2 nav navbar-nav">
-          <li><a href="#!/users/index">Users</a></li>
-          <li><a href="#!/users/new">New User</a></li>
+          <li><a class="tittle-bar-link" href="#!/users/index"><span>Users</span></a></li>
+          <li><a class="tittle-bar-link" href="#!/users/new"><span>New User</span></a></li>
         </ul>
 
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
 
         <ul class="col-md-2 nav navbar-nav navbar-left">
-          <li><a href="#!/tweets/index">Tweets</a></li>
-          <li><a href="#!/tweets/new">New Tweet</a></li>
-          <li><a href="#!/tags/index">Tags</a></li>
+          <li><a class="tittle-bar-link" href="#!/tweets/index"><span>Tweets</span></a></li>
+          <li><a class="tittle-bar-link" href="#!/tweets/new"><span>New Tweet</span></a></li>
+          <li><a class="tittle-bar-link" href="#!/tags/index"><span>Tags</span></a></li>
         </ul>
       </div>
 

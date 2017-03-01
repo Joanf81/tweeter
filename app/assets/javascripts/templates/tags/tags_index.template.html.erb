@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h1>Used tags</h1>
+    <br>
+    <br>
+    <div class="row">
+      <table class="table tags-table">
+        <tr class="title-tr">
+          <td>Tag</td>
+          <td>Times used</td>
+        </tr>
+        <tr class="normal-tr" ng-repeat='tag in tags'>
+          <td class="tags">
+            <p>
+              <a href="#!/tags/tweets/{{tag.id}}">
+                #{{tag.tag}}
+              </a>
+            </p>
+          </td>
+          <td>{{tag.times_used}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<br><br><br>

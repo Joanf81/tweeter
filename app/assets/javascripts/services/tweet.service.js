@@ -15,6 +15,12 @@ app.factory("tweetsService", function($http, apiRoutes) {
         },
         deleteTweets: function(tweet_id, success, error) {
             $http.delete(apiRoutes.Tweets+'/'+tweet_id).then(success, error);
-        }
+        },
+        addTag: function(tweet_id, tag, success, error) {
+            $http.post(apiRoutes.Tweets+'/'+tweet_id+'/tags/', tag).then(success, error);
+        },
+        deleteTag: function(tweet_id, tag_id, success, error) {
+            $http.delete(apiRoutes.Tweets+'/'+tweet_id+'/tags/'+tag_id).then(success, error);
+        },
     }
 });

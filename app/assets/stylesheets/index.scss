@@ -1,3 +1,24 @@
 // Place all the styles related to the index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tittle-bar {
+  background-color: #DAE8ED;
+}
+
+
+.tittle-bar-principal span {
+  color: #053445;
+  font-size: 20px;
+}
+
+.tittle-bar-link span {
+  color: #144252;
+  font-size: 16px;
+}
+
+.tittle-bar-link:hover span {
+  color: #80C3D9;
+  text-decoration: none;
+  background-color: transparent;
+}

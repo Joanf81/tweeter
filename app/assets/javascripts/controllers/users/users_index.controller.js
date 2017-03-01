@@ -7,7 +7,7 @@ app.controller('UsersIndexController', function($scope, usersService) {
         },
         // error:
         function() {
-            alert("An unexpected error has occurred.");
+            alert("An unexpected error has occurred while indexing the users.");
             window.location = "/";
         }
     );

@@ -3,7 +3,7 @@
   <div class="col-md-10">
     <br>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-12">
         <center>
           <h1>New tweet form</h1>
         </center>
@@ -15,7 +15,7 @@
       <div class="form-group">
         <div class="row">
 
-          <div class="col-xs-6">
+          <div class="col-md-6">
             <label for="contentType">Select a kind of tweet:</label>
             <select id="contentType" name="contentType" class="form-control" ng-model="contentType" ng-init="contentType = 'text'"  jfb-validate-all-allowed="">
               <option id="text" value="text" selected>Text Tweet</option>
@@ -25,8 +25,8 @@
             </select>
           </div>
 
-          <div class="col-xs-6">
-            <label for="author">Select a author for the tweet:</label>
+          <div class="col-md-6">
+            <label for="author">Select an author for the tweet:</label>
             <select id="author" name="author" class="form-control" ng-model="author" ng-init="author = '1'" jfb-validate-all-allowed="">
               <option ng-repeat="user in users" value="{{user.id}}" ng-selected="$index==0">{{user.username}}</option>
             </select>
@@ -67,7 +67,7 @@
         <br>
         <br>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-md-12">
             <center>
               <button class="btn btn-default normal-button" type="button" ng-click='tweets_create()' ng-href='#here'>Tweet!</button>
             </center>
@@ -77,6 +77,6 @@
       </div>
     </form>
   </div>
-  <div class="col-xs-1"></div>
+  <div class="col-md-1"></div>
 </div>
 <br><br><br>

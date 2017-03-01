@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h1>Tags admin of tweet {{tweet.id}}</h1>
+    <br>
+    <br>
+    <div class="row">
+      <table class="table tags-table">
+        <tr class="title-tr">
+          <td>Tag</td>
+          <td>Actions</td>
+        </tr>
+        <tr class="normal-tr" ng-repeat='tag in tweet.tags'>
+          <td class="tags">
+            <p>
+              <a href="#!/tags/tweets/{{tag.id}}">
+                #{{tag.tag}}
+              </a>
+            </p>
+          </td>
+          <td class="actions">
+            <a href ng-click="tweets_delete_tag(tag.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true">Remove from tweet</span></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" id="tag" name="tag" class="form-control" placeholder="New tag" ng-model="tag"
+               jfb-validate-numbers-letters jfb-validate-max-characters="15" jfb-validate-content="{{tag}}">
+      </div>
+      <div class="col-md-6">
+        <button ng-click="tweets_add_tag()" class="btn btn-default normal-button" style="margin-top: 18px;" type="button" >Add</button>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <center>
+        <a href="#!/tweets/index">
+          <button class="btn btn-default normal-button" type="button" >Back to tweets</button>
+        </a>
+      </center>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<br><br><br>

@@ -34,7 +34,7 @@ app.controller('UsersNewController', function($scope, usersService, angularRoute
                 },
                 // Error:
                 function() {
-                    alert("It exists some errors in the form.");
+                    alert("The server raised some validation errors. Possibly the user email is duplicated.");
                 });
         }
     };

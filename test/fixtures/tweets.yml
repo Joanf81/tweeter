@@ -4,15 +4,18 @@ TextTweet1:
   text: "Text in TextTweet 1, by testuser1"
   type: "TextTweet"
   user_id: 1
+  tags: Tag1
 
 ImageTweet1:
   url: "http://www.image.com/image.jpg"
   text: "Text in ImageTweet 1, by testuser1"
   type: "ImageTweet"
   user_id: 1
+  tags: Tag1, Tag2
 
 ImageTweet2:
   url: "http://www.image.com/image.jpg"
   type: "ImageTweet"
   user_id: 1
+  tags: Tag1, Tag2, Tag3
 

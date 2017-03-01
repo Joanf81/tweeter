@@ -3,6 +3,7 @@ app.constant('angularRoutes', {
     // Routes where the templates are stored:
     'templates_users': 'users/',
     'templates_tweets': 'tweets/',
+    'templates_tags': 'tags/',
 
     // Routes used in angular from diferents actions
     'users_new': '/users/new',
@@ -14,5 +15,9 @@ app.constant('angularRoutes', {
     'tweets_new': '/tweets/new',
     'tweets_index': '/tweets/index',
     'tweets_edit': '/tweets/edit/',
-    'tweets_delete': '/tweets/delete/'
+    'tweets_delete': '/tweets/delete/',
+    'tweets_admin_tags': '/tweets/admintags/',
+
+    'tags_index': '/tags/index',
+    'tags_tweets': '/tags/tweets/'
 });

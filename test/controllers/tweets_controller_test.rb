@@ -4,7 +4,9 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @textTweet = tweets(:TextTweet1)
-    @imageTweet = tweets(:ImageTweet1)
+    @imageTweet = tweets(:ImageTweet2)
+    @tag1 = tags(:Tag1)
+    @tag2 = tags(:Tag2)
   end
 
 
@@ -182,4 +184,117 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+
+  # Tags
+
+  test "should index the tweet's tags" do
+    get tweet_tags_url(@textTweet[:id])
+
+    assert_response :success
+  end
+
+  test "should not index the non-existent tweet's tags" do
+    id = 9999999
+    get tweet_tags_url(id)
+
+    assert_response :not_found
+    assert @response.body == '{"errors":{"tweet":["The tweet with id=' + id.to_s + ' does not exist."]}}'
+  end
+
+  test "should not index the tags of tweets with malformed id" do
+    id = '99hello99'
+    get tweet_tags_url(id)
+
+    assert_response :not_found
+    assert @response.body == '{"errors":{"tweet":["The tweet with id=' + id + ' does not exist."]}}'
+  end
+
+
+  # Add Tag
+
+  test "should create and add tag into a tweet" do
+    assert_difference('Tag.count') do
+      post tweet_tags_url(@textTweet.id), params: { tag:'newtag' }
+    end
+
+    assert_response :created
+  end
+
+  test "should add tag, already created, into a tweet" do
+    assert_no_difference('Tag.count') do
+      post tweet_tags_url(@textTweet.id), params: { tag:'tag2' }
+    end
+
+    assert_response :success
+  end
+
+  test "should not create a tag into an no-existent tweet" do
+    assert_no_difference('Tag.count') do
+      post tweet_tags_url(999999999), params: { tag:'tag&%$1' }
+    end
+
+    assert_response :not_found
+  end
+
+  test "should not create a tag into tweet with invalid id" do
+    assert_no_difference('Tag.count') do
+      post tweet_tags_url('99hello999'), params: { tag:'tag&%$1' }
+    end
+
+    assert_response :not_found
+  end
+
+  test "should do nothing when try to inserte a tag, that is already inserted, in a tweet " do
+    assert_no_difference('Tag.count') do
+      post tweet_tags_url(@textTweet.id), params: { tag:'tag1' }
+    end
+
+    assert_response :success
+  end
+
+  test "should not create a invalid tag" do
+    assert_no_difference('Tag.count') do
+      post tweet_tags_url(@textTweet.id), params: { tag:'tag&%$1' }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+
+  # Delete Tag
+
+  test "should delete the relation between a tag and a tweet, but should no destroy the tag" do
+    assert_no_difference('Tag.count') do
+      delete tweet_tag_url(@textTweet.id, @tag1.id)
+    end
+
+    assert_response :success
+  end
+
+  test "should delete the relation between a tag and a tweet, and destroy the tag" do
+    num_tags = Tag.all.count
+    delete tweet_tag_url(@imageTweet.id, @tag2.id)
+
+    assert_response :success
+    assert Tag.all.count num_tags-1
+  end
+
+  test "should not do nothing if the tag is not included in the tweet" do
+    delete tweet_tag_url(@textTweet.id, @tag2.id)
+
+    assert_response :not_found
+    assert @response.body == '{"errors":{"tweet":["The tweet does not contain the tag with id='+@tag2.id.to_s+'."]}}'
+  end
+
+  test "should not delete a no-existent tag" do
+    delete tweet_tag_url(@textTweet.id, 9999999)
+
+    assert_response :not_found
+  end
+
+  test "should not delete a the relation between a tag and a no-existent tweet" do
+    delete tweet_tag_url(999999, @tag1.id)
+
+    assert_response :not_found
+  end
 end

@@ -10,6 +10,7 @@ class TweetTest < ActiveSupport::TestCase
     text_tweet.user_id = 1
 
     assert text_tweet.save
+    assert TextTweet.exists?(text_tweet.id)
   end
 
   test "should save valid image tweet without text" do
@@ -18,6 +19,7 @@ class TweetTest < ActiveSupport::TestCase
     image_tweet.user_id = 1
 
     assert image_tweet.save
+    assert ImageTweet.exists?(image_tweet.id)
   end
 
   test "should save valid image tweet with text" do
@@ -27,25 +29,30 @@ class TweetTest < ActiveSupport::TestCase
     image_tweet.user_id = 1
 
     assert image_tweet.save
+    assert ImageTweet.exists?(image_tweet.id)
   end
 
 
   # Invalid params common in the two types of tweets
 
   test "should not save tweet with bad type param" do
-    assert_raises(Exception) { Tweet.new({'text':'text', 'user_id': 1, 'type':'undefined_tweet_type'}) }
+    assert_raises(Exception) { Tweet.new({'text':'text  test 12345678', 'user_id': 1, 'type':'undefined_tweet_type'}) }
+    assert_not TextTweet.exists?({'text':'text  test 12345678'})
   end
 
   test "should not save tweet without user_id" do
-    assert_not TextTweet.new({'text':'text'}).save
+    assert_not TextTweet.new({'text':'text  test 12345678'}).save
+    assert_not TextTweet.exists?({'text':'text  test 12345678'})
   end
 
   test "should not save tweet with user_id inexistent in db" do
-    assert_not TextTweet.new({'text':'text', 'user_id':'99999'}).save
+    assert_not TextTweet.new({'text':'text  test 12345678', 'user_id':'99999'}).save
+    assert_not TextTweet.exists?({'text':'text  test 12345678'})
   end
 
   test "should not save tweet with invalid user_id" do
-    assert_not TextTweet.new({'text':'text', 'user_id':'99hello999'}).save
+    assert_not TextTweet.new({'text':'text  test 12345678', 'user_id':'99hello999'}).save
+    assert_not TextTweet.exists?({'text':'text  test 12345678'})
   end
 
   test "should not save tweet with text.lenght > 140" do
@@ -55,6 +62,7 @@ class TweetTest < ActiveSupport::TestCase
     text_tweet.user_id = 1
 
     assert_not text_tweet.save
+    assert_not TextTweet.exists?(text_tweet.id)
   end
 
   test "should not save tweet with url.lenght > 200" do
@@ -64,6 +72,7 @@ class TweetTest < ActiveSupport::TestCase
     image_tweet.user_id = 1
 
     assert_not image_tweet.save
+    assert_not ImageTweet.exists?(image_tweet.id)
   end
 
 
@@ -75,6 +84,7 @@ class TweetTest < ActiveSupport::TestCase
     text_tweet.user_id = 1
 
     assert_not text_tweet.save
+    assert_not TextTweet.exists?(text_tweet.id)
   end
 
 
@@ -86,6 +96,7 @@ class TweetTest < ActiveSupport::TestCase
     image_tweet.user_id = 1
 
     assert_not image_tweet.save
+    assert_not ImageTweet.exists?(image_tweet.id)
   end
 
 end

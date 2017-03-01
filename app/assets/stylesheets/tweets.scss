@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.tweet {
+.common-style .tweet {
   border-radius: 10px;
 
   margin-right: 5px;
@@ -14,7 +14,7 @@
   background-color: #F0F5F7;
 }
 
-.tweet .tweet-title {
+.common-style .tweet .tweet-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
@@ -30,33 +30,35 @@
   font-size: 17px;
 }
 
-.tweet .tweet-title b {
+.common-style .tweet .tweet-title b {
   font-size: 19px;
 }
 
-.tweet .tweet-content {
+.common-style .tweet .tweet-content {
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
+
 }
 
-.tweet .tweet-content p {
-
+.common-style .tweet .tweet-content p {
   font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.tweet .tweet-content img {
+.common-style .tweet .tweet-content img {
   margin-left: 10px;
 
   border-radius: 10px;
 }
 
-.tweet .tweet-actions {
+.common-style .tweet .tweet-actions {
   padding-right: 20px;
   padding-left: 20px;
   padding-top: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
 
   border-top: solid 1px #88B3C2;
 

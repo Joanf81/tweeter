@@ -44,9 +44,20 @@ app.config(function (angularRoutes, $routeProvider) {
             controller: 'TweetsEditController',
             templateUrl: angularRoutes.templates_tweets + 'tweets_edit.template.html'
         })
-        .when(angularRoutes.tweets_delete + ':idTweet', {
-            controller: 'TweetsDeleteController',
-            templateUrl: 'empty.template.html'
+        .when(angularRoutes.tweets_admin_tags + ':idTweet', {
+            controller: 'TweetsAdminTagsController',
+            templateUrl: angularRoutes.templates_tweets + 'tweets_admin_tags.template.html'
+        })
+
+        ///////////////////////////////// TAG ROUTES ////////////////////////////////////
+
+        .when(angularRoutes.tags_index, {
+            controller: 'TagsIndexController',
+            templateUrl: angularRoutes.templates_tags + 'tags_index.template.html'
+        })
+        .when(angularRoutes.tags_tweets + ':idTag', {
+            controller: 'TagsTweetsIndexController',
+            templateUrl: angularRoutes.templates_tags + 'tags_tweets_index.template.html'
         })
 
         .otherwise({
@@ -55,10 +66,4 @@ app.config(function (angularRoutes, $routeProvider) {
 });
 
 
-app.controller('mainController', function($rootScope, $location) {
-
-    $rootScope.go = function(url) {
-
-        $location.path(url);
-    }
-});
+app.controller('mainController', function($rootScope, $location) { });

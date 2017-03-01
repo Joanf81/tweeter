@@ -38,4 +38,22 @@ class ActiveSupport::TestCase
     tweets_url + "/" + tweet_id.to_s
   end
 
+  def tweet_tags_url(tweet_id)
+   tweet_url(tweet_id) + "/tags"
+  end
+
+  def tweet_tag_url(tweet_id, tag_id)
+    tweet_tags_url(tweet_id) + "/" + tag_id.to_s
+  end
+
+
+  ######################### TAGS ROUTES ########################
+
+  def tags_url
+    api_url + "/tags"
+  end
+
+  def tag_tweets_url(tag_id)
+    tags_url + "/" + tag_id.to_s + "/tweets"
+  end
 end

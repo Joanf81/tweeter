@@ -7,7 +7,7 @@ app.controller('TweetsNewController', function($scope, usersService, tweetsServi
         },
         // error:
         function() {
-            alert("An unexpected error has occurred.");
+            alert("An unexpected error has occurred while indexing the tweets.");
             window.location = "/";
         }
     );
@@ -48,7 +48,7 @@ app.controller('TweetsNewController', function($scope, usersService, tweetsServi
                 },
                 // Error:
                 function() {
-                    alert("It exists some errors in the form.");
+                    alert("The server raised some validation errors.");
                 });
         }
     };

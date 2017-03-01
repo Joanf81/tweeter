@@ -98,11 +98,22 @@
              -->
             </div>
 
+            <div class="row tags">
+              <div class="col-md-12">
+                <p>
+                  <a href="#!/tags/tweets/{{tag.id}}" ng-repeat="tag in tweet.tags">
+                    #{{tag.tag}}
+                  </a>
+                </p>
+              </div>
+            </div>
+
             <div class="row tweet-actions color-title">
               <div class="col-md-12 actions">
                 Actions:
                 <a href="#!/tweets/edit/{{tweet.id}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span></a>
-                <a href="#!/tweets/delete/{{tweet.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span></a>
+                <a href ng-click="delete_tweet(tweet.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span></a>
+                <a href="#!/tweets/admintags/{{tweet.id}}"><span class="glyphicon glyphicon-tag" aria-hidden="true">Admin tags</span></a>
               </div>
             </div>
 
@@ -114,6 +125,6 @@
     </div>
 
   </div>
-  <div class="col-xs-1"></div>
+  <div class="col-md-1"></div>
 </div>
 <br><br><br>

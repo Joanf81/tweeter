@@ -8,7 +8,7 @@ app.controller('UsersEditController', function($scope, usersService, angularRout
 
         //error
         function() {
-            alert("An unexpected error has occurred.");
+            alert("An unexpected error has occurred while recovering the user's data.");
             window.location = "/";
         });
 
@@ -46,7 +46,7 @@ app.controller('UsersEditController', function($scope, usersService, angularRout
 
                 //error:
                 function (errors) {
-                    alert("It exists some errors in the form.");
+                    alert("The server raised some validation errors. Possibly the user email is duplicated.");
                 });
         }
     }

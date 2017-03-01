@@ -8,7 +8,7 @@ app.controller('TweetsEditController', function($scope, tweetsService, $routePar
 
         //error
         function() {
-            alert("An unexpected error has occurred.");
+            alert("An unexpected error has occurred while recovering the tweet data.");
             window.location = "/";
         });
 
@@ -46,7 +46,7 @@ app.controller('TweetsEditController', function($scope, tweetsService, $routePar
                 },
                 // Error:
                 function() {
-                    alert("It exists some errors in the form.");
+                    alert("The server raised some validation errors.");
                 });
         }
     };
